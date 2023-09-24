@@ -1,4 +1,7 @@
-﻿namespace Caesar_cipher
+﻿using System.Text;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace Caesar_cipher
 {
     class Program
     {
@@ -6,28 +9,18 @@
         {
             while (true)
             {
-               
-                
+
                 string inputString = Input.InputString();
                 int shift = Input.InputShift();
-                bool decoding = Input.DecodingStatus();
-                Encoder encoder = new Encoder(new RussianAlphabet());
-                Decoder decoder = new Decoder(new RussianAlphabet());
-                string result = "";
+                StringBuilder stringBuilder = new StringBuilder();
+                Encoder encoder = new Encoder();
+               
                 while (true)
                 {
                     string[] splitString = inputString.Split(" ", 2);
-                    
-                    result += encoder.EncryptWord(splitString[0], shift);
 
-                    if (decoding)
-                    {
-                        result += decoder.DecodingWord(splitString[0], shift);
-                    }
-                    else
-                    {
-                        result += encoder.EncryptWord(splitString[0], shift);
-                    }
+                    stringBuilder.Append(encoder.EncryptWord(splitString[0], shift) + " ");
+                    
                     if (splitString.Length > 1)
                     {
                         inputString = splitString[1];
@@ -37,13 +30,8 @@
                         break;
                     }
                 }
-                Console.WriteLine(result);
-
+                Console.WriteLine(stringBuilder);
             }
-        }
-        static void encoding()
-        {
-
         }
     }
 }

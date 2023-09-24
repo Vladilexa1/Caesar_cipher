@@ -21,7 +21,6 @@ namespace Caesar_cipher
             while (true)
             {
                 string input = Console.ReadLine();
-
                 int.TryParse(input, out int result);
                 if (result == 0)
                 {
@@ -40,27 +39,6 @@ namespace Caesar_cipher
                 }
                 return result;
             }
-        }
-        public static bool DecodingStatus()
-        {
-            while (true)
-            {
-                Console.WriteLine("Write status program. (ex. d - its decoding, e - its encoding");
-                string statusProgramm = Console.ReadLine();
-                if (statusProgramm.ToLower() == "d")
-                {
-                    return true;
-                }
-                if (statusProgramm.ToLower() == "e")
-                {
-                    return false;
-                }
-                else
-                {
-                    continue;
-                }
-            }
-           
         }
     }
 }
