@@ -9,28 +9,11 @@ namespace Caesar_cipher
         {
             while (true)
             {
-
-                string inputString = Input.InputString();
+                string inputString = Input.InputString();  //File.ReadAllText("test.txt");  
                 int shift = Input.InputShift();
-                StringBuilder stringBuilder = new StringBuilder();
                 Encoder encoder = new Encoder();
-               
-                while (true)
-                {
-                    string[] splitString = inputString.Split(" ", 2);
 
-                    stringBuilder.Append(encoder.EncryptWord(splitString[0], shift) + " ");
-                    
-                    if (splitString.Length > 1)
-                    {
-                        inputString = splitString[1];
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                Console.WriteLine(stringBuilder);
+                Console.WriteLine(encoder.EncryptWord(inputString, shift));
             }
         }
     }
